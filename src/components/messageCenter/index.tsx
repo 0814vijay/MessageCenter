@@ -19,7 +19,7 @@ import UnarchiveIcon from '@mui/icons-material/Unarchive';
 const MessageCenter = () => {
   const [value, setValue] = React.useState(0);
   const [clickMessage, setClickMessage] = React.useState<number | null>(null);
-
+const isMobile = window.innerWidth <= 440;
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
      setClickMessage(null);
@@ -46,7 +46,7 @@ const MessageCenter = () => {
     <div className="main-container">
       <h1 className="title">Message Center</h1>
       <div className="container">
-        <div className="left-side">
+        <div className={`left-side ${isMobile && clickMessage !== null ? 'hide' : ''}`}>
           <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
             <Tabs value={value} onChange={handleChange} indicatorColor="secondary" 
            textColor="secondary"
@@ -63,43 +63,45 @@ const MessageCenter = () => {
           </Box>
         </div>
         <div className="right-side">
-          <div className="show-description">
-            {/* Display the clicked message details on the right side */}
-            {clickMessage !== null ? (
-              rawData
-                .filter((message) => message.id === clickMessage)
-                .map((message) => (
-                  <div key={message.id}>
-                    <h2 >{message.title} <span className='archive-icon'>
-                        {message.isArchived
-                         ?
-                         <>
-                         <Icon onClick={()=>{unarchiveMessageOnchange(message.id)}}
-                        >
-                   <UnarchiveIcon/>
+           {isMobile && clickMessage !== null && (
+    <button className="back-button" onClick={() => setClickMessage(null)}>
+      ← Back to Messages
+    </button>
+  )}
+          <div className={`show-description ${isMobile && clickMessage !== null ? 'active' : ''}`}>
+ 
+
+  {clickMessage !== null ? (
+    rawData
+      .filter((message) => message.id === clickMessage)
+      .map((message) => (
+        <div key={message.id}>
+          <h2>
+            {message.title}
+            <span className="archive-icon">
+              {message.isArchived ? (
+                <Icon onClick={() => unarchiveMessageOnchange(message.id)}>
+                  <UnarchiveIcon />
                 </Icon>
-                         </> 
-                         :
-                          <>
-                          <Icon onClick={()=>{archiveMessageOnchange(message.id)}}
-                        >
-                   <ArchiveIcon/>
+              ) : (
+                <Icon onClick={() => archiveMessageOnchange(message.id)}>
+                  <ArchiveIcon />
                 </Icon>
-                          </>}
-                        </span></h2>
-                    <p>{message.description}</p>
-               <div >
-                    
-                </div>
-                    
-                   
-                    {/* You can display more message details here */}
-                  </div>
-                ))
-            ) : (
-              <p className='default-message'>No Message Selected , Please Select Message to Read</p>
-            )}
-          </div>
+              )}
+            </span>
+          </h2>
+          <p>{message.description}</p>
+        </div>
+      ))
+  ) : (
+    !isMobile && (
+      <p className="default-message">
+        No Message Selected , Please Select Message to Read
+      </p>
+    )
+  )}
+</div>
+
         </div>
       </div>
     </div>

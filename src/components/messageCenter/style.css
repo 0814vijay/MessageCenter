@@ -69,3 +69,58 @@ width: 0;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     padding-top: 20px;
 }
+@media (max-width: 440px) {
+  .container {
+    display: block;
+  }
+
+  .left-side {
+    width: 100%;
+  }
+
+  .left-side.hide {
+    display: none;
+  }
+
+  .right-side {
+    width: 100%;
+    border: none;
+  }
+
+  .show-description {
+   
+    display: none;
+    padding: 15px;
+    background-color: lightgray;
+    margin-top: 10px;
+    max-width: 100%;
+    position: static;
+  }
+
+.show-description.active {
+  display: flex;
+  flex-direction: column; 
+  min-height: 100vh;        /* full viewport height if needed */
+  padding: 20px;
+  background-color: lightgray;
+}
+
+}
+.back-button {
+  display: none;
+  margin-bottom: 10px;
+  font-size: 16px;
+  background-color: #6200ea;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+@media (max-width: 440px) {
+  .back-button {
+    display: block;
+  }
+}
+
