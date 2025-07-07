@@ -22,7 +22,6 @@ const MessageCenter = () => {
 const isMobile = window.innerWidth <= 440;
   const handleChange = (_event: React.SyntheticEvent,  newValue: number) => {
   setValue(newValue);
-  console.log(newValue,"newValue")
   setClickMessage(null);
 };
   const archiveMessageOnchange =(id:number) =>{
@@ -158,7 +157,7 @@ const Messages = (props: { setClickMessage: React.Dispatch<React.SetStateAction<
                     </React.Fragment>
                   }
                 />
-                <Icon onClick={() => toggleIcon(x.id)} style={{marginTop:"7px"}}>
+                <Icon onClick={() => toggleIcon(x.id)} style={{marginTop:"7px"}} className='email-icon'>
                   {readStates[x.id] ? <MarkEmailReadIcon /> : <MarkEmailUnreadIcon />}
                 </Icon>
               </ListItem>
