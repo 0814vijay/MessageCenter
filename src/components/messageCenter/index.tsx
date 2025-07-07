@@ -20,7 +20,7 @@ const MessageCenter = () => {
   const [value, setValue] = React.useState(0);
   const [clickMessage, setClickMessage] = React.useState<number | null>(null);
 const isMobile = window.innerWidth <= 440;
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+  const handleChange = (newValue: number) => {
     setValue(newValue);
      setClickMessage(null);
   };
