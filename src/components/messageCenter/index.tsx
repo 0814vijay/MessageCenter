@@ -20,11 +20,11 @@ const MessageCenter = () => {
   const [value, setValue] = React.useState(0);
   const [clickMessage, setClickMessage] = React.useState<number | null>(null);
 const isMobile = window.innerWidth <= 440;
-  const handleChange = (newValue: number) => {
-    setValue(newValue);
-     setClickMessage(null);
-  };
-
+  const handleChange = (_event: React.SyntheticEvent,  newValue: number) => {
+  setValue(newValue);
+  console.log(newValue,"newValue")
+  setClickMessage(null);
+};
   const archiveMessageOnchange =(id:number) =>{
     if(rawData && id){ 
         rawData.filter((x)=>x.id === id)
@@ -48,7 +48,7 @@ const isMobile = window.innerWidth <= 440;
       <div className="container">
         <div className={`left-side ${isMobile && clickMessage !== null ? 'hide' : ''}`}>
           <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-            <Tabs value={value} onChange={handleChange} indicatorColor="secondary" 
+            <Tabs value={value}   onChange={handleChange} indicatorColor="secondary" 
            textColor="secondary"
           variant="fullWidth" className="tabs" >
               <Tab label="Messages" {...a11yProps(0)} />
