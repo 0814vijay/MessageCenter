@@ -1,0 +1,71 @@
+ 
+
+/* Main container should take the full height, with space for title */
+.main-container {
+    height: 100%;    
+     padding-bottom: 20px;   
+}
+
+/* The container should take full height minus title space */
+.container {
+  display: grid;
+  grid-template-columns: 30% 70%;
+  height:calc(100vh - 64px);  /* Subtract space for the title + margin */
+  margin-bottom: 10px;
+
+}
+
+/* Left side styling */
+.left-side {
+  border: 5px solid lightgray   ;
+  overflow: auto;  
+  overflow-x: hidden;
+}
+
+/* Right side styling */
+.right-side {
+  border: 2.5px solid lightgray;
+  overflow: auto;  
+  overflow-x: hidden;   
+}
+
+.show-description{
+    padding: 15px;
+    max-width: 500px;
+    min-height: 100px;
+    background-color: lightgray; 
+    position: relative;
+    left: 25%;
+    top:30%
+    
+}
+/* Tabs container */
+.tabs {
+  margin: 0;
+  padding: 0; 
+}
+
+/* Title styling */
+.title {
+  font-size: 24px;
+  margin: 20px 10px; /* Space around the title */
+  text-align: left;
+  padding: 0; /* Remove padding to prevent overflow */
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; 
+} 
+.avatar{
+   
+width: 0;
+}
+.archive-icon{
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+    top:-25px
+
+}
+.default-message{
+    font-size: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    padding-top: 20px;
+}
